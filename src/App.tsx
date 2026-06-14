@@ -1,5 +1,6 @@
 import { SmoothScroll } from "./lib/SmoothScroll";
 import { useReveals } from "./lib/useReveals";
+import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import ScrollStage from "./components/ScrollStage";
 import Projects from "./components/Projects";
@@ -11,7 +12,8 @@ export default function App() {
   useReveals();
   return (
     <SmoothScroll>
-      <main>
+      <Nav />
+      <main id="top">
         <Hero />
         <ScrollStage />
         <Skills />

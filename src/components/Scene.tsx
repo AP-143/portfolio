@@ -8,6 +8,8 @@ const TERRA = "#C4502D";
 type Props = {
   progress: MutableRefObject<number>;
   reduced: boolean;
+  /** ambient = a calm, slowly-orbiting backdrop (hero) that ignores scroll. */
+  ambient?: boolean;
 };
 
 const smoothstep = (t: number) => t * t * (3 - 2 * t);
@@ -44,7 +46,7 @@ function useNodes() {
   }, []);
 }
 
-export default function Scene({ progress, reduced }: Props) {
+export default function Scene({ progress, reduced, ambient = false }: Props) {
   const { camera } = useThree();
   const groupRef = useRef<THREE.Group>(null);
   const coreRef = useRef<THREE.Mesh>(null);
@@ -124,6 +126,30 @@ export default function Scene({ progress, reduced }: Props) {
   const tgt = useRef(new THREE.Vector3()).current;
 
   useFrame((state, delta) => {
+    // ---- ambient backdrop (hero): slow orbit, ignore scroll ----
+    if (ambient) {
+      const t = state.clock.elapsedTime;
+      const r = 12.5;
+      camera.position.set(
+        Math.sin(t * 0.07) * r,
+        6 + Math.sin(t * 0.11) * 0.7,
+        Math.cos(t * 0.07) * r
+      );
+      camera.lookAt(0, 1.2, 0);
+      if (coreRef.current) {
+        coreRef.current.rotation.y += delta * 0.22;
+        coreRef.current.rotation.x += delta * 0.1;
+        coreRef.current.scale.setScalar(0.95);
+      }
+      if (ringRef.current) {
+        ringRef.current.rotation.z += delta * 0.35;
+        ringRef.current.rotation.x = Math.PI / 2.4;
+      }
+      if (terraLightRef.current) terraLightRef.current.intensity = 9;
+      if (particlesRef.current) particlesRef.current.rotation.y += delta * 0.02;
+      return;
+    }
+
     const p = THREE.MathUtils.clamp(progress.current, 0, 1);
 
     // ---- camera along the waypoints ----

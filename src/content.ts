@@ -19,26 +19,31 @@ export const site = {
 };
 
 // The 4 identity beats synced to the pinned 3D scroll-stage (progress 0→1).
+// Each beat is one thing I'd bring to the Academy — with concrete proof below.
 export const steps = [
   {
     no: "01",
-    title: "Full-Stack Foundation",
-    body: "I build across the stack — database, server logic, and interface — and take a system from idea to a working product.",
+    title: "AI into real products",
+    body: "I wire AI into things people actually use: transcription, LLM judgement calls, and automated media pipelines.",
+    proof: "ClipStudio — an end-to-end AI video tool, shipped solo",
   },
   {
     no: "02",
-    title: "AI into real products",
-    body: "Lately I wire AI into things people actually use: transcription, LLM judgement calls, and automated media pipelines.",
+    title: "Full-Stack Foundation",
+    body: "I build across the stack — database, server logic, and interface — and take a system from idea to a working product.",
+    proof: "Zulffaya — a real store taking real payments",
   },
   {
     no: "03",
     title: "Systems, Risk & Probability",
     body: "Years of trading taught me to act on incomplete information, manage downside, and let data — not emotion — decide.",
+    proof: "A 6-month, 89-trade strategy backtest on gold",
   },
   {
     no: "04",
     title: "Built to ship",
-    body: "Honest progress states, graceful fallback, edge cases handled. The closest I’ve come to shipping real products.",
+    body: "Honest progress states, graceful fallback, edge cases handled — not demos, but tools that hold up on real input.",
+    proof: "5 projects taken from empty repo to working product",
   },
 ];
 

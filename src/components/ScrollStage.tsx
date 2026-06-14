@@ -62,9 +62,8 @@ export default function ScrollStage() {
         {/* HTML overlay */}
         <Steps active={active} />
 
-        <div className="pointer-events-none absolute left-0 right-0 top-7 mx-auto flex max-w-6xl items-center justify-between px-6 md:px-10">
-          <span className="klabel">What I bring</span>
-          <span className="klabel hidden sm:block">Scroll to explore</span>
+        <div className="pointer-events-none absolute bottom-7 right-6 hidden md:block md:right-10">
+          <span className="klabel">Scroll to explore</span>
         </div>
 
         {/* subtle vignette so text stays legible over the scene */}
