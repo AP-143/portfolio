@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: #1b1b1d;
+  color: #ECECEC;
+  font-family: Inter, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: #C4502D;
+  color: #fff;
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[11px] font-semibold tracking-[0.28em] uppercase text-terra;
+  }
+  .klabel {
+    @apply text-[10.5px] font-medium tracking-[0.22em] uppercase text-muted;
+  }
+  .chip {
+    @apply text-[12.5px] text-paper/90 border border-white/10 rounded-md px-3 py-[6px]
+           transition-transform duration-200 ease-out;
+  }
+  .chip:hover {
+    @apply -translate-y-[2px];
+    border-color: rgba(196, 80, 45, 0.5);
+  }
+}
+
+@layer utilities {
+  .dotgrid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1.4px);
+    background-size: 26px 26px;
+  }
+  .serif-italic {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+  }
+}
+
+/* scroll-reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.85s cubic-bezier(0.22, 0.65, 0.18, 1),
+    transform 0.85s cubic-bezier(0.22, 0.65, 0.18, 1);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
